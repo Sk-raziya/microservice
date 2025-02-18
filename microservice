@@ -1,0 +1,23 @@
+package com.skyscanner.hoen;
+
+import io.dropwizard.Application;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
+import com.skyscanner.hoen.resources.SearchResource;
+
+public class HoenSearchApplication extends Application<HoenSearchConfiguration> {
+    public static void main(String[] args) throws Exception {
+        new HoenSearchApplication().run(args);
+    }
+
+    @Override
+    public void initialize(Bootstrap<HoenSearchConfiguration> bootstrap) {
+        // Initialization if needed
+    }
+
+    @Override
+    public void run(HoenSearchConfiguration configuration, Environment environment) {
+        final SearchResource resource = new SearchResource();
+        environment.jersey().register(resource);
+    }
+}
